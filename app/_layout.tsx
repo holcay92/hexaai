@@ -10,8 +10,6 @@ SplashScreen.preventAutoHideAsync();
 function AppWrapper({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
 
-  console.log("Theme:", theme);
-
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.primary }]}>
       {children}
@@ -29,7 +27,7 @@ export default function RootLayout() {
     "Manrope-Regular": require("../assets/fonts/Manrope/static/Manrope-Regular.ttf"),
     "Manrope-SemiBold": require("../assets/fonts/Manrope/static/Manrope-SemiBold.ttf"),
   });
-
+  const theme = useTheme();
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
@@ -43,7 +41,20 @@ export default function RootLayout() {
   return (
     <ThemeProvider>
       <AppWrapper>
-        <Stack />
+        <Stack
+          screenOptions={{
+            headerTitle: "AI Logo",
+            headerStyle: {
+              backgroundColor: theme.colors.primary,
+            },
+            headerTintColor: theme.colors.text,
+            headerTitleStyle: {
+              fontFamily: "Manrope-Bold",
+              fontSize: 20,
+            },
+            headerTitleAlign: "center",
+          }}
+        />
       </AppWrapper>
     </ThemeProvider>
   );

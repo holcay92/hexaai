@@ -6,7 +6,7 @@ const PromptInput = () => {
   const [text, setText] = useState("");
 
   return (
-    <>
+    <View style={styles.container}>
       <View style={styles.headerRow}>
         <Text style={styles.headerText}>Enter Your Prompt</Text>
         <TouchableOpacity style={styles.surpriseMeContainer}>
@@ -39,13 +39,18 @@ const PromptInput = () => {
         />
         <Text style={styles.charCounter}>{text.length}/500</Text>
       </View>
-    </>
+    </View>
   );
 };
 
 export default PromptInput;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: "100%",
+    padding: 24,
+  },
   promptContainer: {
     flex: 1,
     width: "100%",

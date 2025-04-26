@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 12,
+    marginVertical: 24,
+    paddingLeft: 24,
   },
   headerRow: {
     width: "100%",
