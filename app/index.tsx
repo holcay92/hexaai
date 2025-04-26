@@ -1,4 +1,5 @@
 import CreateButton from "@/components/CreateButton";
+import LogoStylesContainer from "@/components/LogoStylesContainer";
 import PromptInput from "@/components/PromptInput";
 import TopBar from "@/components/TopBar";
 import { Text, View } from "react-native";
@@ -18,6 +19,7 @@ export default function Index() {
       >
         <TopBar />
         <PromptInput />
+        <LogoStylesContainer />
         <CreateButton />
       </View>
     </GestureHandlerRootView>
