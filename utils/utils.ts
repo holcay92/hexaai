@@ -29,3 +29,15 @@ export const initiateGenerationProcess = (
 
   return () => clearTimeout(timer);
 };
+export const getImageSource = (imageName: string) => {
+  switch (imageName) {
+    case "monogram":
+      return require("../assets/images/monogram.png");
+    case "abstract":
+      return require("../assets/images/abstract.png");
+    case "mascot":
+      return require("../assets/images/mascot.png");
+    default:
+      return require("../assets/images/slash.png");
+  }
+};

@@ -1,30 +1,37 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
-import { Logo } from "@/constant/types/logo";
 import LogoStyleItem from "./LogoStyleItem";
-import { mockData } from "@/constant/mockData";
+import { useLogo } from "@/Context/LogoContext";
 
 const LogoStylesContainer = () => {
+  const { logoData, loading } = useLogo();
+
+  if (loading) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.headerRow}>
         <Text style={styles.headerText}>Logo Styles</Text>
       </View>
-      <FlatList
-        data={mockData}
-        renderItem={({ item }) => <LogoStyleItem logo={item as Logo} />}
-        keyExtractor={(item) => item.id.toString()}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingHorizontal: 16,
-          paddingVertical: 8,
-        }}
-        style={{
-          width: "100%",
-        }}
-      />
+      {logoData && (
+        <FlatList
+          data={logoData}
+          renderItem={({ item }) => <LogoStyleItem logo={item} />}
+          keyExtractor={(item) => item.id.toString()}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingHorizontal: 16,
+            paddingVertical: 8,
+          }}
+          style={{
+            width: "100%",
+          }}
+        />
+      )}
     </View>
   );
 };

@@ -1,16 +1,20 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-import { Logo } from "@/constant/types/logo";
+import { getImageSource } from "@/utils/utils";
 
 interface LogoStyleItemProps {
-  logo: Logo;
+  logo: { id: number; name: string; image: string };
 }
 
 const LogoStyleItem = ({ logo }: LogoStyleItemProps) => {
   return (
     <View style={styles.container}>
       <Image
-        source={logo.logoImage}
+        source={
+          logo.image
+            ? getImageSource(logo.image)
+            : require("../assets/images/slash.png")
+        }
         resizeMode="contain"
         style={{
           width: 90,
@@ -22,7 +26,7 @@ const LogoStyleItem = ({ logo }: LogoStyleItemProps) => {
           position: "relative",
         }}
       />
-      <Text style={styles.text}>{logo.logoName}</Text>
+      <Text style={styles.text}>{logo.name}</Text>
     </View>
   );
 };

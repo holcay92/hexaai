@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { ThemeProvider, useTheme } from "@/Context/ThemeContext";
 import { View, StyleSheet } from "react-native";
 import { PromptProvider } from "@/Context/PromptContext";
+import { LogoProvider } from "@/Context/LogoContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,25 +43,27 @@ export default function RootLayout() {
   return (
     <ThemeProvider>
       <PromptProvider>
-        <AppWrapper>
-          <Stack
-            screenOptions={{
-              headerTitle: "AI Logo",
-              headerStyle: {
-                backgroundColor: theme.colors.primary,
-              },
-              headerTintColor: theme.colors.text,
-              headerTitleStyle: {
-                fontFamily: "Manrope-Bold",
-                fontSize: 20,
-              },
-              headerTitleAlign: "center",
-              headerBackVisible: false,
-            }}
-          >
-            <Stack.Screen name="output" options={{ headerShown: false }} />
-          </Stack>
-        </AppWrapper>
+        <LogoProvider>
+          <AppWrapper>
+            <Stack
+              screenOptions={{
+                headerTitle: "AI Logo",
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.text,
+                headerTitleStyle: {
+                  fontFamily: "Manrope-Bold",
+                  fontSize: 20,
+                },
+                headerTitleAlign: "center",
+                headerBackVisible: false,
+              }}
+            >
+              <Stack.Screen name="output" options={{ headerShown: false }} />
+            </Stack>
+          </AppWrapper>
+        </LogoProvider>
       </PromptProvider>
     </ThemeProvider>
   );

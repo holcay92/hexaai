@@ -5,12 +5,11 @@ import ErrorComponent from "@/components/ErrorComponent";
 import LogoStylesContainer from "@/components/LogoStylesContainer";
 import PromptInput from "@/components/PromptInput";
 import { useRouter } from "expo-router";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef } from "react";
 import { View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { initiateGenerationProcess } from "@/utils/utils";
 import { useTheme } from "@/Context/ThemeContext";
-
 export default function Index() {
   const [status, setStatus] = useState<
     "idle" | "processing" | "done" | "error"
