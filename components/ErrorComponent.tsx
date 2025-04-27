@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
-const ErrorComponent = () => {
+const ErrorComponent = ({ onPress }: { onPress: () => void }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.leftSide}>
         <Image
           source={require("../assets/images/alert.png")}
@@ -32,7 +32,7 @@ const ErrorComponent = () => {
           Click to try again
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -40,7 +40,6 @@ export default ErrorComponent;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     width: "100%",

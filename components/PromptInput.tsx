@@ -1,9 +1,19 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
-import { TextInput } from "react-native-gesture-handler";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 
-const PromptInput = () => {
+const PromptInput = forwardRef((_, ref) => {
   const [text, setText] = useState("");
+
+  useImperativeHandle(ref, () => ({
+    clearPrompt: () => setText(""),
+  }));
 
   return (
     <View style={styles.container}>
@@ -31,7 +41,7 @@ const PromptInput = () => {
       </View>
     </View>
   );
-};
+});
 
 export default PromptInput;
 
@@ -39,6 +49,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     paddingHorizontal: 24,
+    marginTop: 24,
   },
   promptContainer: {
     width: "100%",
@@ -59,7 +70,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     lineHeight: 21,
     fontSize: 16,
-    color: "#71717A",
+    color: "#ffffff",
   },
   charCounter: {
     position: "absolute",

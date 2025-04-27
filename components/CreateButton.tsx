@@ -2,13 +2,10 @@ import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
-const CreateButton = () => {
+const CreateButton = ({ onPress }: { onPress: () => void }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => console.log("Button pressed")}
-        style={styles.button}
-      >
+      <TouchableOpacity onPress={onPress} style={styles.button}>
         <LinearGradient
           colors={["#2938DC", "#943DFF"]}
           start={{ x: 0, y: 0 }}

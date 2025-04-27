@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
-const DesignReadyComponent = () => {
+const DesignReadyComponent = ({ onPress }: { onPress: () => void }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.leftSide}>
         <Image
           source={require("../assets/images/output.png")}
@@ -39,7 +39,7 @@ const DesignReadyComponent = () => {
           Tap to see it
         </Text>
       </LinearGradient>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -47,7 +47,6 @@ export default DesignReadyComponent;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
