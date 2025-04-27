@@ -1,50 +1,49 @@
-# Welcome to your Expo app 👋
+# HexaAI
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+HexaAI is a React Native application built with Expo, designed to generate and display AI-powered logo designs. The app integrates Firebase for backend services and uses modern React features like Context API for state management.
 
-## Get started
+---
 
-1. Install dependencies
+## Main Features
 
-   ```bash
-   npm install
-   ```
+- **Prompt Input**: Users can enter a prompt to generate a logo design.
+- **Logo Styles**: Displays a list of predefined logo styles fetched from Firebase.
+- **Design Generation**: Simulates a design generation process
+- **Error Handling**: Displays an error component with retry functionality if the generation fails.
+- **Design Output**: Displays the generated design along with the entered prompt.
 
-2. Start the app
+---
 
-   ```bash
-    npx expo start
-   ```
+## App Structure
 
-In the output, you'll find options to open the app in a
+### **Contexts**
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- **`ThemeContext`**: Provides theme colors and styles throughout the app.
+- **`PromptContext`**: Manages the user-entered prompt globally.
+- **`LogoContext`**: Fetches and manages logo styles from Firebase.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### **Components**
 
-## Get a fresh project
+- **`PromptInput`**: A text input for users to enter their prompt.
+- **`LogoStylesContainer`**: Displays a horizontal list of logo styles.
+- **`LogoStyleItem`**: Represents a single logo style item.
+- **`CreateButton`**: A button to start the logo generation process.
+- **`LoadingComponent`**: Displays a loading indicator during the generation process.
+- **`ErrorComponent`**: Displays an error message with a retry option.
+- **`DesignReadyComponent`**: Indicates that the design is ready and allows navigation to the output screen.
 
-When you're ready, run:
+### **Screens**
 
-```bash
-npm run reset-project
-```
+- **`index.tsx`**: The main screen where users can enter a prompt, view logo styles, and start the generation process.
+- **`output.tsx`**: Displays the generated design and the entered prompt.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### **Utilities**
 
-## Learn more
+- **`fetchLogo.ts`**: Fetches logo styles from Firebase and restructures the data.
+- **`utils.ts`**: Contains helper functions like `generateRandomDelay` and `initiateGenerationProcess`.
 
-To learn more about developing your project with Expo, look at the following resources:
+### **Firebase**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- **Firestore**: Stores logo styles and other app data.
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
