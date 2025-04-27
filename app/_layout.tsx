@@ -55,6 +55,7 @@ export default function RootLayout() {
                 fontSize: 20,
               },
               headerTitleAlign: "center",
+              headerBackVisible: false,
             }}
           >
             <Stack.Screen name="output" options={{ headerShown: false }} />
