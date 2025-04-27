@@ -33,10 +33,9 @@ export default LogoStylesContainer;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
     marginVertical: 24,
     paddingLeft: 24,
   },
