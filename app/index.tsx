@@ -5,10 +5,11 @@ import ErrorComponent from "@/components/ErrorComponent";
 import LogoStylesContainer from "@/components/LogoStylesContainer";
 import PromptInput from "@/components/PromptInput";
 import { useRouter } from "expo-router";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { initiateGenerationProcess } from "@/utils/utils";
+import { useTheme } from "@/Context/ThemeContext";
 
 export default function Index() {
   const [status, setStatus] = useState<
@@ -16,6 +17,7 @@ export default function Index() {
   >("idle");
   const router = useRouter();
   const promptRef = useRef<{ clearPrompt: () => void }>(null);
+  const { colors } = useTheme();
 
   const handleCreatePress = () => {
     if (promptRef.current) {
@@ -26,8 +28,8 @@ export default function Index() {
     return initiateGenerationProcess(
       () => setStatus("done"),
       () => setStatus("error"),
-      3000,
-      6000,
+      300,
+      600,
       0.2
     );
   };
@@ -49,7 +51,8 @@ export default function Index() {
           flex: 1,
           justifyContent: "flex-start",
           alignItems: "center",
-          backgroundColor: "#09090B",
+          backgroundColor: colors.primary,
+
           paddingTop: 24,
         }}
       >

@@ -4,6 +4,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { ThemeProvider, useTheme } from "@/Context/ThemeContext";
 import { View, StyleSheet } from "react-native";
+import { PromptProvider } from "@/Context/PromptContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -40,22 +41,26 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider>
-      <AppWrapper>
-        <Stack
-          screenOptions={{
-            headerTitle: "AI Logo",
-            headerStyle: {
-              backgroundColor: theme.colors.primary,
-            },
-            headerTintColor: theme.colors.text,
-            headerTitleStyle: {
-              fontFamily: "Manrope-Bold",
-              fontSize: 20,
-            },
-            headerTitleAlign: "center",
-          }}
-        />
-      </AppWrapper>
+      <PromptProvider>
+        <AppWrapper>
+          <Stack
+            screenOptions={{
+              headerTitle: "AI Logo",
+              headerStyle: {
+                backgroundColor: theme.colors.primary,
+              },
+              headerTintColor: theme.colors.text,
+              headerTitleStyle: {
+                fontFamily: "Manrope-Bold",
+                fontSize: 20,
+              },
+              headerTitleAlign: "center",
+            }}
+          >
+            <Stack.Screen name="output" options={{ headerShown: false }} />
+          </Stack>
+        </AppWrapper>
+      </PromptProvider>
     </ThemeProvider>
   );
 }

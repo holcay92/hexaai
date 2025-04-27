@@ -1,3 +1,4 @@
+import { usePrompt } from "@/Context/PromptContext";
 import React, { forwardRef, useImperativeHandle, useState } from "react";
 import {
   StyleSheet,
@@ -10,10 +11,16 @@ import {
 
 const PromptInput = forwardRef((_, ref) => {
   const [text, setText] = useState("");
+  const { prompt, setPrompt } = usePrompt();
 
   useImperativeHandle(ref, () => ({
     clearPrompt: () => setText(""),
   }));
+
+  const handleTextChange = (value: string) => {
+    setText(value);
+    setPrompt(value);
+  };
 
   return (
     <View style={styles.container}>
@@ -34,7 +41,7 @@ const PromptInput = forwardRef((_, ref) => {
           placeholder="Type your prompt here..."
           placeholderTextColor={"#888"}
           value={text}
-          onChangeText={(value) => setText(value)}
+          onChangeText={(value) => handleTextChange(value)}
           style={styles.textInput}
         />
         <Text style={styles.charCounter}>{text.length}/500</Text>
