@@ -38,13 +38,14 @@ const output = () => {
     <View style={[styles.container, { backgroundColor: colors.primary }]}>
       <View style={styles.headercontainer}>
         <Text style={styles.header}> Your Design</Text>
-        <FontAwesome
-          name="close"
-          size={24}
-          color="rgba(255, 255, 255, 1)"
-          style={{ marginLeft: "auto" }}
-          onPress={handleClose}
-        />
+        <TouchableOpacity onPress={handleClose}>
+          <Image
+            source={require("../assets/images/close.png")}
+            width={13.75}
+            height={13.75}
+            style={{ marginLeft: "auto" }}
+          />
+        </TouchableOpacity>
       </View>
       <Image
         source={require("../assets/images/outputbig.png")}
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 60,
     marginTop: 24,
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
   },

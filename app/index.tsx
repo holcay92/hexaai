@@ -10,19 +10,30 @@ import { View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { initiateGenerationProcess } from "@/utils/utils";
 import { useTheme } from "@/Context/ThemeContext";
+import { usePrompt } from "@/Context/PromptContext";
+
 export default function Index() {
   const [status, setStatus] = useState<
     "idle" | "processing" | "done" | "error"
   >("idle");
+  const [showWarning, setShowWarning] = useState(false);
   const router = useRouter();
   const promptRef = useRef<{ clearPrompt: () => void }>(null);
   const { colors } = useTheme();
+  const { prompt } = usePrompt();
 
   const handleCreatePress = () => {
+    if (prompt.length < 3) {
+      setShowWarning(true);
+      return;
+    }
+
+    setShowWarning(false);
+    setStatus("processing");
+
     if (promptRef.current) {
       promptRef.current.clearPrompt();
     }
-    setStatus("processing");
 
     return initiateGenerationProcess(
       () => setStatus("done"),
@@ -60,7 +71,7 @@ export default function Index() {
           <DesignReadyComponent onPress={handleDesignReadyPress} />
         )}
 
-        <PromptInput ref={promptRef} />
+        <PromptInput ref={promptRef} showWarning={showWarning} />
         <LogoStylesContainer />
       </View>
       <View
