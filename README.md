@@ -29,8 +29,8 @@ HexaAI is a React Native application built with Expo, designed to generate and d
 - **`LogoStyleItem`**: Represents a single logo style item.
 - **`CreateButton`**: A button to start the logo generation process.
 - **`LoadingComponent`**: Displays a loading indicator during the generation process.
-- **`ErrorComponent`**: Displays an error message with a retry option.
-- **`DesignReadyComponent`**: Indicates that the design is ready and allows navigation to the output screen.
+- **`ErrorComponent`**: Displays an error message with a retry option.(%10 probability)
+- **`DesignReadyComponent`**: Indicates that the design is ready and allows navigation to the output screen. (%90 probability)
 
 ### **Screens**
 
@@ -45,5 +45,13 @@ HexaAI is a React Native application built with Expo, designed to generate and d
 ### **Firebase**
 
 - **Firestore**: Stores logo styles and other app data.
+- **Functions**: I added but got a problem regarding payment method. So i did not used cloud functions on this project
+
+![alt text](<Screenshot 2025-04-28 at 14.03.25.png>)
+![alt text](<Screenshot 2025-04-28 at 14.03.06.png>)
+![alt text](<Screenshot 2025-04-28 at 14.05.21.png>)
+![alt text](<Screenshot 2025-04-28 at 14.02.56.png>)
+![alt text](<Screenshot 2025-04-28 at 14.05.00.png>)
+![alt text](<Screenshot 2025-04-28 at 14.05.07.png>)
 
 ---

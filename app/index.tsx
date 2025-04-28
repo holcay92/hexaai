@@ -38,9 +38,9 @@ export default function Index() {
     return initiateGenerationProcess(
       () => setStatus("done"),
       () => setStatus("error"),
-      300,
-      600,
-      0.2
+      30000,
+      60000,
+      0.1
     );
   };
 

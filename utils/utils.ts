@@ -12,9 +12,9 @@ export const generateRandomDelay = (min: number, max: number): number => {
 export const initiateGenerationProcess = (
   onSuccess: () => void,
   onError: () => void,
-  minDelay: number = 3000,
-  maxDelay: number = 6000,
-  errorProbability: number = 0.2
+  minDelay: number = 30000,
+  maxDelay: number = 60000,
+  errorProbability: number = 0.1
 ): (() => void) => {
   const delay = generateRandomDelay(minDelay, maxDelay);
   const isError = Math.random() < errorProbability;
