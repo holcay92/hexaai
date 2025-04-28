@@ -51,7 +51,6 @@ export default function Index() {
           justifyContent: "flex-start",
           alignItems: "center",
           backgroundColor: colors.primary,
-
           paddingTop: 24,
         }}
       >
@@ -63,6 +62,15 @@ export default function Index() {
 
         <PromptInput ref={promptRef} />
         <LogoStylesContainer />
+      </View>
+      <View
+        style={{
+          width: "100%",
+          padding: 16,
+          backgroundColor: colors.primary,
+          paddingBottom: 50,
+        }}
+      >
         <CreateButton onPress={handleCreatePress} />
       </View>
     </GestureHandlerRootView>

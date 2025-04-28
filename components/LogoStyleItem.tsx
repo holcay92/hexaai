@@ -15,7 +15,6 @@ const LogoStyleItem = ({ logo }: LogoStyleItemProps) => {
             ? getImageSource(logo.image)
             : require("../assets/images/slash.png")
         }
-        resizeMode="contain"
         style={{
           width: 90,
           height: 90,

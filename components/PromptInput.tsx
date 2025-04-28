@@ -11,6 +11,7 @@ import {
 
 const PromptInput = forwardRef((_, ref) => {
   const [text, setText] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
   const { prompt, setPrompt } = usePrompt();
 
   useImperativeHandle(ref, () => ({
@@ -34,7 +35,12 @@ const PromptInput = forwardRef((_, ref) => {
           <Text style={styles.surpriseText}>Surprise me</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.promptContainer}>
+      <View
+        style={[
+          styles.promptContainer,
+          { borderColor: isFocused ? "#959595" : "#27272A", borderWidth: 2 },
+        ]}
+      >
         <TextInput
           multiline
           numberOfLines={4}
@@ -42,6 +48,8 @@ const PromptInput = forwardRef((_, ref) => {
           placeholderTextColor={"#888"}
           value={text}
           onChangeText={(value) => handleTextChange(value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           style={styles.textInput}
         />
         <Text style={styles.charCounter}>{text.length}/500</Text>
